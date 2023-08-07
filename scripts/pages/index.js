@@ -22,6 +22,7 @@ async function getData() {
         // Récupère les datas des photographes
         const data = await getData();
         const photographers = data.photographers;
+        console.log(data);
         displayData(photographers);
     }
     
