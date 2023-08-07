@@ -34,7 +34,7 @@ h1 {
 .photographer_section article {
     justify-self: center;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
 }
@@ -47,4 +47,5 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
 }
