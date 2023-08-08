@@ -15,3 +15,10 @@ function photographerTemplate(data) {
     }
     return { name, picture, getUserCardDOM }
 }
+/* 
+il faut ajouter 
+href,  id : pour  etre envoyer sur la page du photographe
+city,country : h3
+tagline: h4
+price :h5
+ */
