@@ -42,7 +42,7 @@ displayInput(medias)
  // Affichage par tri "menuSort.js"
  document.getElementById('trie').addEventListener('change', (e) => {
     selectChange(e, medias);
-    displayMedia(medias);
+    
 })
  })
 })
