@@ -57,6 +57,69 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.trie-text {
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-left: 101px;
+
+}
+.photograph-media__input {
+    margin: 20px 0;
+}
+select {
+    font-size: 1em;
+    font-weight: 500;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    background: #901C1C;
+    color: white;
+}
+#photograph-media{
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 100px;
+}
+.medias_photographer{
+    width: 350px;
+    height: 351px;
+    margin: 0 95px 20px 0;
+    
+}
+.medias-photographer_pic{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.media_photo__information{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.information-likes{
+    width: 50px;
+display: flex;
+align-items: center;
+justify-content:space-between;
+}
+.likes{
+    font-family: DM Sans;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #901C1C;
+
+    
+}
+
 
 .modal {
     border-radius: 5px;

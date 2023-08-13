@@ -7,7 +7,7 @@ const url = 'data/photographers.json';
 
 // afficher tout les donné de id avec ".find"
 fetch(url)
-    .then(Response => {Response.json()
+    .then(response => {return response.json()})
     .then((data) => {
         const photographer = data.photographers;
         const medias = data.media;
@@ -33,26 +33,47 @@ userProfil.innerHTML=`<aside class="photograph-header_information">
                      
                      <img class="photograph-header_photo" src="assets/photographers/${profilPhotographer.portrait}" alt="${profilPhotographer.name}"/>`
 
-const photographMain =document.getElementById("main");
+const photographMain =document.getElementById("profile");
 photographMain.appendChild(userProfil);
 
-displayInput(medias)
+displayInput(medias);
+displayMedia(medias);
+
+})
 
 
- // Affichage par tri "menuSort.js"
- document.getElementById('trie').addEventListener('change', (e) => {
-    selectChange(e, medias);
-    
-})
- })
-})
+
+ .catch(error => {
+    console.log('Vous avez fait une erreur:' + error);
+    })
+
 /*
 - Fonction affichage INPUT(menu déroulant)
 _ Aavec appel de la Factory Media
 */
 function displayInput(medias) {
-    const mediaSection = document.querySelector(".photograph-media");
+    const mediaSection = document.getElementById("sortBy");
     const input = mediaFactory(medias);
     const inputUser = input.getInputSelection();
-    mediaSection.appendChild(inputUser);
+    mediaSection.appendChild(inputUser); 
 }
+
+function displayMedia(medias) {
+
+    const gridMedia =document.getElementById("photograph-media");
+         
+         medias.forEach((media)=> {
+
+            const mediaPhotograph =mediaFactory(media);   
+            if (media.photographerId == id){
+                if(media.image){
+                     const userMedia = mediaPhotograph.getphotoDom();
+                    gridMedia.appendChild(userMedia);
+                }else{
+                    const userMedia = mediaPhotograph.getvideoDom();
+                    gridMedia.appendChild(userMedia);
+                }
+            }
+        });
+         
+        }

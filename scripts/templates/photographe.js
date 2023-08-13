@@ -6,7 +6,7 @@ function  photographerFactory(data) {
     
     // Création de type carte pour un PHOTOGRAPHE
     function getUserCardDOM() {
-        const profil = document.createElement('article');
+        const profil = document.createElement('section');
         profil.setAttribute("class", "photographer");
         profil.setAttribute("id", `${id}`);
 
