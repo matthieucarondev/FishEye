@@ -24,7 +24,7 @@ function mediaFactory (data) {
         userPhoto.setAttribute("id", `${id}`);
        
             userPhoto.innerHTML= ` <figure class="medias_photographer" tabindex="3">
-                                    <img class="medias-photographer_pic"src="assets/images/${image}" alt="${title}" aria-label="Ouvre la lightbox"/>
+                                    <img class="medias-photographer_pic" src="assets/images/${image}" alt="${title}" aria-label="Ouvre la lightbox"/>
                                             <figcaption class="media_photo__information">
                                             <h3>${title}</h3>
                                                 <div class="information-likes">
