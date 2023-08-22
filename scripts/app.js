@@ -1,9 +1,10 @@
 import { PhotographData } from './data/photographData.js';
 import {typeDataFactory} from './factory/DataFactory.js';
+//import { MediaFactory} from './factory/MediaFactory.js';
 import {createAllPhotographerCard  ,createGlobalPhotographerpage ,} from './component/photographer.js';
 import  {getInputSelection} from './templates/sortby.js';
-
-
+import  {mediaData} from './data/mediaData.js';
+//import { createMedia} from './component/Media.js';
 
 
 
@@ -15,6 +16,7 @@ class App {
          this.$photographerPage = document.querySelector('#profile');
          // Créer PhotographerApi pour obtenir des données Photographer
         this._photographData = new PhotographData('../../data/photographers.json');
+        this._mediaApi = new mediaData('../../data/photographers.json');
     }
 
 
@@ -59,6 +61,18 @@ class App {
                     //créer SortBy
                     const SortBy = document.getElementById('sortBy');
                     SortBy.appendChild(getInputSelection());
+              /*      //Toutes les données médias par photographe
+                    const mediaData = await this._mediaApi.getAllMediaByPhotographer(photographerID);
+
+                // Vérifiez si nous avons des données multimédias
+                    if (mediaData){
+                        //Utiliser Factory (gérer les médias : Image ou Vidéo)
+                        const media = new MediaFactory (mediaData,'photographData');
+                        //creer les media
+                        const cardmedia = doucument.getElementById('photograph-media');
+                       // cardmedia.appendChild(createMedia());
+                
+                    }*/
             }
     }
 }

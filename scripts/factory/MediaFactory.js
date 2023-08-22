@@ -4,7 +4,7 @@ import { Video } from '../models/Video.js';
 class MediaFactory {
     constructor(data, type) {
         // Media Photographer
-        if (type === 'PhotographerApi') {
+        if (type === 'PhotographData') {
             const ManageMedia = data
                 .map((media) => {
                     if (typeof media.image !== 'undefined') {
