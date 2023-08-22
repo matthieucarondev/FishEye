@@ -36,27 +36,24 @@ class App {
 
             // Photographer Page
     async photographerPage() {
-        // Get photographerID on URL
+        // Obtenir photographerID sur l’URL
         const parametersURL = new URL(document.location).searchParams;
         const photographerID = parseInt(parametersURL.get('id'));
-        // Init message error
+        // Erreur de message d’initialisation
         const messageError =
             "Erreur: L'ID du photographe n'existe pas, ou n'est pas la bonne (photographerPage).";
 
-        // Check if ID
+        // Vérifiez si l’ID
         if (photographerID) {
-            // Get all photographers data
-            const photographerData = await this._photographerMediaApi.getOnePhotographer(photographerID,);
+            // Obtenir toutes les données des photographes
+            const photographerData = await this._photographData .getOnePhotographer(photographerID,);
             
             if (photographerData) {
-                    // Use Factory
-                    const Photographer = new PhotographersFactory(photographerData, 'PhotographerApi');
+                    // utiliser Factory
+                    const Photographer = new typeDataFactory(photographerData, 'PhotographData');
     
-                    // All photographer data
-                    console.log('===[ Photographer data ]===');
-                    console.log(Photographer);
-    
-                    // Create Photographer Page
+            
+                    // creer Photographer Page
                     createGlobalPhotographerpage(Photographer, this.$photographerPage);
             }
     }
