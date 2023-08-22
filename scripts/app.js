@@ -1,6 +1,7 @@
 import { PhotographData } from './data/photographData.js';
 import {typeDataFactory} from './factory/DataFactory.js';
 import {createAllPhotographerCard  ,createGlobalPhotographerpage ,} from './component/photographer.js';
+import  {getInputSelection} from './templates/sortby.js';
 
 
 
@@ -55,6 +56,9 @@ class App {
             
                     // creer Photographer Page
                     createGlobalPhotographerpage(Photographer, this.$photographerPage);
+                    //créer SortBy
+                    const SortBy = document.getElementById('sortBy');
+                    SortBy.appendChild(getInputSelection());
             }
     }
 }
