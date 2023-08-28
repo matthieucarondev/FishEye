@@ -28,7 +28,7 @@
         font-weight: 400;
         margin: 0%;
     }
-.info_place h3{
+.info h3{
         
         font-size: 24px;
         font-weight: 400;
@@ -57,34 +57,104 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.trie-text {
-
+.photographer__filter {
+    display: flex;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+    margin: 10px 100px;
+    margin-bottom: 30px;
+    height: 60px;
+   
+}
+.photographer__filter--label{
+    font-family: DM Sans;
     font-size: 18px;
     font-weight: 700;
-    line-height: 23px;
-    letter-spacing: 0em;
-    text-align: left;
-    margin-left: 101px;
+    line-height: 32px;
+    margin-right: 50px;
+}
+.photographer__filter--select{
+    width: 165px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+.photographer__filter--select i{
+    padding-right: 10px;
+}
+.photographer__filter--menu{
+    display: none;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 10;
 
 }
-.photograph-media__input {
-    margin: 20px 0;
+.photographer__filter--menu  .FE-button {
+    width: 165px;
+    height: 40px;
+    padding: 10px;
 }
-select {
-    font-size: 1em;
-    font-weight: 500;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 5px;
-    background: #901C1C;
+.photographer__filter--menu  .FE-button:hover {
+
+    background:#D3573C!important;
+    
+
+}
+#filter-popularite #filter-date #filter-titre{
+    height: 60    px;
+    display: flex;
+    gap: 25px;
+    padding: 10px;
+}
+.photographer__filter--separator{
+    height: 2px;
+    width: 185px;
+    background-color: white;
+    padding-bottom: 5px;
+}
+.photographer__filter  .FE-button {
+    background:#901C1C;
     color: white;
+    border-radius: 5px;
+   
+
+
 }
+.photographer__filter--active{
+    padding-left: 20px;
+    font-size: 18px;
+}
+.photographer__filter--optionname{
+    padding-left: 20px;
+    font-size: 18px;
+}
+.photographer__filter--option  {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   gap: 25px;
+}   
+
+  
 #photograph-media{
     display: flex;
     justify-content: space-evenly; 
     align-items: center;
     flex-wrap: wrap;
     margin-left: 100px;
+}
+.media_photo, .media_video {
+    align-items: center;
+    flex-direction: column;
+    a {
+        cursor: pointer;
+    }
 }
 .medias_photographer{
     width: 350px;
@@ -129,8 +199,6 @@ justify-content:space-between;
     z-index: 1;
     padding: 15px 0;
     border-radius: 5px;
-     }
-#likePrice{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -140,7 +208,7 @@ justify-content:space-between;
 
  }   
 
-#total__likes{
+ .aside__total-likes{
         
     display: flex;
     flex-direction: row;

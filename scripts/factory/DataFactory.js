@@ -1,6 +1,6 @@
 import { Photographer } from '../models/Photographer.js';
 
-class typeDataFactory {
+class DataFactory {
     constructor(data, type) {
         // Photographer
         if (type === 'PhotographData') {
@@ -11,4 +11,4 @@ class typeDataFactory {
     }
 }
 
-export { typeDataFactory };
+export {DataFactory };

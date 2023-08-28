@@ -1,22 +1,29 @@
 import { PhotographData } from './data/photographData.js';
-import {typeDataFactory} from './factory/DataFactory.js';
-//import { MediaFactory} from './factory/MediaFactory.js';
+import {DataFactory} from './factory/DataFactory.js';
+import { MediaFactory} from './factory/MediaFactory.js';
 import {createAllPhotographerCard  ,createGlobalPhotographerpage ,} from './component/photographer.js';
 import  {getInputSelection} from './templates/sortby.js';
+import { Likes } from './templates/Likes.js';
 import  {mediaData} from './data/mediaData.js';
-//import { createMedia} from './component/Media.js';
+ 
+
+import {updateMedia,filterSelectEvent} from './component/Media.js';
+import { closeModalFilterOptions } from "./utils/Dropdown.js";
+
 
 
 
 class App {
     constructor() {
         // Section avec tous les profils de photographes
-        this.$photographersSection = document.querySelector('.photographer_section');
+        this._photographersSection = document.querySelector('.photographer_section');
          // Page du photographe, avec toutes les données du photographe
-         this.$photographerPage = document.querySelector('#profile');
+         this._photographerPage = document.querySelector('#profile');
+         this._mediaSection = document.getElementById('photograph-media');
          // Créer PhotographerApi pour obtenir des données Photographer
         this._photographData = new PhotographData('../../data/photographers.json');
         this._mediaApi = new mediaData('../../data/photographers.json');
+
     }
 
 
@@ -28,12 +35,12 @@ class App {
             if (allPhotographersData) {
                 // Utiliser Factory
                 const Photographers = allPhotographersData.map(
-                    (photographer) => new typeDataFactory(photographer, 'PhotographData'),
+                    (photographer) => new DataFactory(photographer, 'PhotographData'),
                 );
     
                 // Créer toutes les PhotographerCard
-                createAllPhotographerCard(Photographers, this.$photographersSection);
-                console.log(createAllPhotographerCard());
+                createAllPhotographerCard(Photographers, this._photographersSection);
+               
             }
         }
 
@@ -49,38 +56,98 @@ class App {
         // Vérifiez si l’ID
         if (photographerID) {
             // Obtenir toutes les données des photographes
-            const photographerData = await this._photographData .getOnePhotographer(photographerID,);
-            
+            const photographerData = await this._photographData .getOnePhotographer(photographerID);
+            console.log(photographerData);
             if (photographerData) {
-                    // utiliser Factory
-                    const Photographer = new typeDataFactory(photographerData, 'PhotographData');
-    
-            
-                    // creer Photographer Page
-                    createGlobalPhotographerpage(Photographer, this.$photographerPage);
-                    //créer SortBy
-                    const SortBy = document.getElementById('sortBy');
-                    SortBy.appendChild(getInputSelection());
-              /*      //Toutes les données médias par photographe
-                    const mediaData = await this._mediaApi.getAllMediaByPhotographer(photographerID);
+                // utiliser Factory
+                const Photographer = new DataFactory(photographerData, 'PhotographData');
 
-                // Vérifiez si nous avons des données multimédias
-                    if (mediaData){
-                        //Utiliser Factory (gérer les médias : Image ou Vidéo)
-                        const media = new MediaFactory (mediaData,'photographData');
-                        //creer les media
-                        const cardmedia = doucument.getElementById('photograph-media');
-                       // cardmedia.appendChild(createMedia());
+
+                // creer Photographer Page
+                createGlobalPhotographerpage(Photographer, this._photographerPage);
+
+                //créer SortBy
+                const SortBy = document.getElementById('sortBy');
+                SortBy.appendChild(getInputSelection());
                 
-                    }*/
+                const filterActive = document.querySelector('.photographer__filter--active');
+                filterActive.innerText = "Popularité";
+                 // Filter select
+                 const filterSelect = document.querySelector('.photographer__filter--select');
+                 // Add event listner on filter select
+                 filterSelectEvent(filterSelect);
+          
+
+                // recuperer les medias du photographes : une liste d"objet au format json
+                const allMediaDATA =await this._mediaApi .getAllMediaByPhotographer(photographerID);
+                
+                        if (allMediaDATA) {
+                                    const Mediaphotograph = new MediaFactory(allMediaDATA,'PhotographData');
+                                    console.log(Mediaphotograph);
+
+                                    updateMedia(Mediaphotograph,"Popularité",this._mediaSection);
+                                    // tous les option filtre
+                                    const filterPopularite = document.getElementById('filter-popularite');
+                                    const filterDate = document.getElementById('filter-date');
+                                    const filterTitre = document.getElementById('filter-titre');
+                                    // 'Popularité'
+                                    this.filterEvent(filterPopularite, Mediaphotograph, 'Popularité');
+                                    // 'Date'
+                                    this.filterEvent(filterDate,Mediaphotograph, 'Date');
+                                    // 'Titre'
+                                    this.filterEvent(filterTitre, Mediaphotograph, 'Titre');
+
+                                   
+                                
+
+                                   
+                                    // aside prix total like
+
+                                    const asideLikes = document.getElementById('total');
+                                    const asideTemplate = new Likes(Photographer, Mediaphotograph );
+                                    asideLikes.innerHTML = asideTemplate.createAsideLikes();
+
+                        }
+                 }
             }
+        }
+        filterEvent(filter, Media, option) {
+            filter.addEventListener('click', () => updateMedia(Media, option, this._mediaSection));
+            filter.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    updateMedia(Media, option, this._mediaSection);
+                    closeModalFilterOptions();
+                    filter.focus();
+                }
+            });
+        }
     }
-}
-}
+
     // Créer une application « FishEye »
 const app = new App();
+function router(app, currentPage) {
+    let route;
+    // Message d’erreur par défaut
+    const messageError = "Vous êtes perdu ? Retournons à l'accueil.Cette URL n'existe pas.";
 
+    switch (currentPage) {
+        // Home Page
+        case '/index.html':
+        case '/FishEye/index.html':
+        case '/FishEye/':
+            route = app.homePage();
+                  break;
+        // Photographer Page
+        case '/photographer.html':
+        case '/FishEye/photographer.html':
+            route = app.photographerPage();
+            break;
+            
+        }
+        return route;
+    }
+    
 // Routeur
 const currentPage = document.location.pathname;
-app.photographerPage();
+
 router(app, currentPage);
