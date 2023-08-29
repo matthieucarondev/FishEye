@@ -16,7 +16,7 @@
                aria-label="trier les médias par ..."
                aria-haspopup="true"
                aria-expanded="false"
-               aria-selected="true"
+               
            >
                <h3 class="photographer__filter--active"></h3>
                <i class="fa-solid fa-angle-down"></i>

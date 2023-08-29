@@ -4,13 +4,13 @@ class PhotographerPage {
     }
 
     createPhotographerPage() {
-        const photographerPage = `<aside class="photograph-header_information">
+        const photographerPage = `<aside aria-label="profile photographe" class="photograph-header_information">
         <div class="info">
             <h1>${this._photographer.name}</h1>
             <div class="info_place">
-                <h3>${this._photographer.place}</h3>
+                <h2>${this._photographer.place}</h2>
             </div>
-                <h4>${this._photographer.tagline}</h4>
+                <h3>${this._photographer.tagline}</h3>
         </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
             <div class="photographer__page--avatar">

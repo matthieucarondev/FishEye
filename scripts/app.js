@@ -28,21 +28,21 @@ class App {
 
 
 
-        async homePage() {
-          //  Obtenir toutes les données des photographes
-            const allPhotographersData = await this._photographData.getAllPhotographers();
-            //Vérifiez si nous avons toutes les données des photographes 
-            if (allPhotographersData) {
-                // Utiliser Factory
-                const Photographers = allPhotographersData.map(
-                    (photographer) => new DataFactory(photographer, 'PhotographData'),
-                );
-    
-                // Créer toutes les PhotographerCard
-                createAllPhotographerCard(Photographers, this._photographersSection);
-               
-            }
+    async homePage() {
+        //  Obtenir toutes les données des photographes
+        const allPhotographersData = await this._photographData.getAllPhotographers();
+        //Vérifiez si nous avons toutes les données des photographes 
+        if (allPhotographersData) {
+            // Utiliser Factory
+            const Photographers = allPhotographersData.map(
+                (photographer) => new DataFactory(photographer, 'PhotographData'),
+            );
+
+            // Créer toutes les PhotographerCard
+            createAllPhotographerCard(Photographers, this._photographersSection);
+            
         }
+    }
 
             // Photographer Page
     async photographerPage() {
@@ -72,9 +72,9 @@ class App {
                 
                 const filterActive = document.querySelector('.photographer__filter--active');
                 filterActive.innerText = "Popularité";
-                 // Filter select
+                 // Filtrer la sélection
                  const filterSelect = document.querySelector('.photographer__filter--select');
-                 // Add event listner on filter select
+                 // Ajouter un listeur d’événements sur la sélection de filtre
                  filterSelectEvent(filterSelect);
           
 
@@ -111,16 +111,16 @@ class App {
                  }
             }
         }
-        filterEvent(filter, Media, option) {
-            filter.addEventListener('click', () => updateMedia(Media, option, this._mediaSection));
-            filter.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    updateMedia(Media, option, this._mediaSection);
-                    closeModalFilterOptions();
-                    filter.focus();
-                }
-            });
-        }
+            filterEvent(filter, Media, option) {
+                filter.addEventListener('click', () => updateMedia(Media, option, this._mediaSection));
+                filter.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        updateMedia(Media, option, this._mediaSection);
+                        closeModalFilterOptions();
+                        filter.focus();
+                    }
+                });
+            }
     }
 
     // Créer une application « FishEye »
