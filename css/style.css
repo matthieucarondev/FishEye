@@ -44,29 +44,22 @@ h1 {
     text-decoration: none;
 }
 
-.photographer_section a h2 {
-    font-family: DM Sans;
-    font-size: 36px;
+.photographer__card--place {
+    font-size: 24px;
     font-weight: 400;
-    line-height: 47px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #D3573C;
-    margin: 0 ;
-
-}
-.photographer_section a h3 {
-    font-family: DM Sans;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 17px;
-    letter-spacing: 0em;
-    text-align: center;
     color: #901C1C;
-    margin: 0;
-
+    margin: 10px 0 0 0;
+    text-align: center;
 }
-.photographer_section a h4 {
+.photographer__card--name {
+    color: #D3573C;
+    font-size: 50px;
+    font-weight: 400;
+    margin: 0%;
+    text-align: center;
+
+    }
+.photographer__card--dailyprice  {
     font-family: DM Sans;
     font-size: 10px;
     font-weight: 400;
@@ -75,6 +68,14 @@ h1 {
     text-align: center;
     margin: 0;
     }
+  .photographer__card--tagline
+   { margin-top: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: #525252;
+    margin: 10px 0 0 0 ;
+}
 
 .photographer_section a img {
     object-fit:cover;
