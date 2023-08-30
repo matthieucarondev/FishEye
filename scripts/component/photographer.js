@@ -9,7 +9,7 @@ export function createAllPhotographerCard(Photographers, photographersSection) {
         photographersSection.appendChild(Card.createPhotographerCard());
     });
 }
-export function createGlobalPhotographerpage(Photographer, photographerPage) {
+export function createGlobalProfilephotographer(Photographer, photographerPage) {
     const Template = new PhotographerPage(Photographer);
     photographerPage.innerHTML = Template.createPhotographerPage();
 }

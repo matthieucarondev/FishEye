@@ -1,13 +1,12 @@
 import { PhotographData } from './data/photographData.js';
 import {DataFactory} from './factory/DataFactory.js';
-import { MediaFactory} from './factory/MediaFactory.js';
-import {createAllPhotographerCard  ,createGlobalPhotographerpage ,} from './component/photographer.js';
+import {createAllPhotographerCard  ,createGlobalProfilephotographer ,} from './component/photographer.js';
 import  {getInputSelection} from './templates/sortby.js';
 import { Likes } from './templates/Likes.js';
 import  {mediaData} from './data/mediaData.js';
- 
+ import {MediaFactory  } from "./factory/MediaFactory.js";
 
-import {updateMedia,filterSelectEvent} from './component/Media.js';
+import { displayMedia ,SortSelectEvent} from './component/Media.js';
 import { closeModalFilterOptions } from "./utils/Dropdown.js";
 
 
@@ -57,15 +56,15 @@ class App {
         if (photographerID) {
             // Obtenir toutes les données des photographes
             const photographerData = await this._photographData .getOnePhotographer(photographerID);
-            console.log(photographerData);
+            ;
             if (photographerData) {
                 // utiliser Factory
                 const Photographer = new DataFactory(photographerData, 'PhotographData');
 
 
                 // creer Photographer Page
-                createGlobalPhotographerpage(Photographer, this._photographerPage);
-
+                createGlobalProfilephotographer(Photographer, this._photographerPage);
+//en faire une fonction
                 //créer SortBy
                 const SortBy = document.getElementById('sortBy');
                 SortBy.appendChild(getInputSelection());
@@ -75,27 +74,29 @@ class App {
                  // Filtrer la sélection
                  const filterSelect = document.querySelector('.photographer__filter--select');
                  // Ajouter un listeur d’événements sur la sélection de filtre
-                 filterSelectEvent(filterSelect);
+                 SortSelectEvent(filterSelect);
           
 
                 // recuperer les medias du photographes : une liste d"objet au format json
-                const allMediaDATA =await this._mediaApi .getAllMediaByPhotographer(photographerID);
+                const allMediaDATA =await this._mediaApi.getAllMediaByPhotographer(photographerID);
                 
                         if (allMediaDATA) {
-                                    const Mediaphotograph = new MediaFactory(allMediaDATA,'PhotographData');
-                                    console.log(Mediaphotograph);
+                                    const Mediaphotograph =allMediaDATA.map((medias) => new MediaFactory(medias));
+                                    
+                                    
 
-                                    updateMedia(Mediaphotograph,"Popularité",this._mediaSection);
+
+                                    displayMedia(Mediaphotograph,"Popularité",this._mediaSection);
                                     // tous les option filtre
                                     const filterPopularite = document.getElementById('filter-popularite');
                                     const filterDate = document.getElementById('filter-date');
                                     const filterTitre = document.getElementById('filter-titre');
                                     // 'Popularité'
-                                    this.filterEvent(filterPopularite, Mediaphotograph, 'Popularité');
+                                    this. SortEvent(filterPopularite, Mediaphotograph, 'Popularité');
                                     // 'Date'
-                                    this.filterEvent(filterDate,Mediaphotograph, 'Date');
+                                    this.SortEvent(filterDate,Mediaphotograph, 'Date');
                                     // 'Titre'
-                                    this.filterEvent(filterTitre, Mediaphotograph, 'Titre');
+                                    this.SortEvent(filterTitre, Mediaphotograph, 'Titre');
 
                                    
                                 
@@ -111,11 +112,11 @@ class App {
                  }
             }
         }
-            filterEvent(filter, Media, option) {
-                filter.addEventListener('click', () => updateMedia(Media, option, this._mediaSection));
+            SortEvent(filter, allmedia, option) {
+                filter.addEventListener('click', () => displayMedia(allmedia, option, this._mediaSection));
                 filter.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
-                        updateMedia(Media, option, this._mediaSection);
+                        displayMedia(allmedia, option, this._mediaSection);
                         closeModalFilterOptions();
                         filter.focus();
                     }

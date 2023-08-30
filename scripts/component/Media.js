@@ -1,34 +1,26 @@
-
-import { ImageCard } from '../templates/ImageCard.js';
-import { VideoCard } from '../templates/VideoCard.js';
+import { Image } from "../models/image.js";
+import {  Video} from "../models/video.js";
+import { MediaFactory  } from "../factory/MediaFactory.js";
 import {showModalFilter,closeModalFilterOptions} from "../utils/Dropdown.js";
 
-
- export function createMedia(Media, mediaSection){
+ export function createMedia(allmedias, mediaSection){
     // Créer toutes les PhotographerCar
-    Media?.forEach((data) =>{
-        if (data.image) {
-            const imageTemplate = new ImageCard(data);
-            const mediaUser = imageTemplate.createImageCard();
-            mediaSection.appendChild(mediaUser);
-        } else if (data.video) {
-            const videoTemplate = new VideoCard(data);
-            const mediaUser = videoTemplate.createVideoCard();
-            mediaSection.appendChild(mediaUser);
-        }
+    allmedias?.forEach((medias) =>{
+     const htmlcard = allmedias.generateHTMLCard();
+     mediaSection.appendChild(htmlcard);
+
     });
     
 }
 
    // Updatemedia par filtre
-  export function updateMedia(Media, filter, mediaSection) {
+  export function displayMedia(allmedias, filter, mediaSection) {
       // Changer de média avec le filtre
-      const filterActive = document.querySelector('.photographer__filter--active');
-      filterActive.innerText = filter;
-      filterMedia(Media, filter); 
+
+    sortMedia(allmedias, filter); 
          // Réinitialiser la section des médias de contenu
     mediaSection.innerHTML = '';
-      createMedia(Media, mediaSection); 
+      createMedia(allmedias, mediaSection); 
       closeModalFilterOptions()
       manageLikes();
   }
@@ -74,7 +66,7 @@ function manageLikes() {
 }
 
 // Sélection par tri
-export function filterMedia(data, filter) {
+export function sortMedia(data, filter) {
     let result;
     switch (filter) {
         case 'Popularité':
@@ -91,7 +83,7 @@ export function filterMedia(data, filter) {
     }
     return result;
 }
-export function filterSelectEvent(filterSelect) {
+export function SortSelectEvent(filterSelect) {
     
     filterSelect.addEventListener('click', () => showModalFilter());
     filterSelect.addEventListener('keypress', (e) => {
