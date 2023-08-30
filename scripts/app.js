@@ -64,17 +64,6 @@ class App {
 
                 // creer Photographer Page
                 createGlobalProfilephotographer(Photographer, this._photographerPage);
-//en faire une fonction
-                //créer SortBy
-                const SortBy = document.getElementById('sortBy');
-                SortBy.appendChild(getInputSelection());
-                
-                const filterActive = document.querySelector('.photographer__filter--active');
-                filterActive.innerText = "Popularité";
-                 // Filtrer la sélection
-                 const filterSelect = document.querySelector('.photographer__filter--select');
-                 // Ajouter un listeur d’événements sur la sélection de filtre
-                 SortSelectEvent(filterSelect);
           
 
                 // recuperer les medias du photographes : une liste d"objet au format json
@@ -84,6 +73,7 @@ class App {
                                     const Mediaphotograph =allMediaDATA.map((medias) => new MediaFactory(medias));
                                     
                                     
+                                    this.sortElement();
 
 
                                     displayMedia(Mediaphotograph,"Popularité",this._mediaSection);
@@ -112,6 +102,18 @@ class App {
                  }
             }
         }
+        sortElement()
+        { const SortBy = document.getElementById('sortBy');
+        SortBy.appendChild(getInputSelection());
+        
+        const filterActive = document.querySelector('.photographer__filter--active');
+        filterActive.innerText = "Popularité";
+         // Filtrer la sélection
+         const filterSelect = document.querySelector('.photographer__filter--select');
+         // Ajouter un listeur d’événements sur la sélection de filtre
+         SortSelectEvent(filterSelect);
+  
+}
             SortEvent(filter, allmedia, option) {
                 filter.addEventListener('click', () => displayMedia(allmedia, option, this._mediaSection));
                 filter.addEventListener('keypress', (e) => {
@@ -122,6 +124,7 @@ class App {
                     }
                 });
             }
+            
     }
 
     // Créer une application « FishEye »

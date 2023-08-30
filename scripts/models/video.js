@@ -9,7 +9,7 @@ class Video extends Media {
     get video() {
         return this._video;
     }
-    get generateHTMLCard() {
+    get generateHTMLCard(){
         const article = document.createElement('article');
         article.classList.add("media_video");
 

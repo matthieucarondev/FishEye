@@ -10,8 +10,8 @@ class Image extends Media {
         return this._image;
     }
     
-     generateHTMLCard() {
-        const article = document.createElement('article');
+     get generateHTMLCard(){
+      const article = document.createElement('article');
         article.classList.add("media_photo");
         
 

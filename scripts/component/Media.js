@@ -1,12 +1,12 @@
-import { Image } from "../models/image.js";
-import {  Video} from "../models/video.js";
+import { Image} from "../models/image.js";
+import { Video} from "../models/video.js";
 import { MediaFactory  } from "../factory/MediaFactory.js";
 import {showModalFilter,closeModalFilterOptions} from "../utils/Dropdown.js";
 
  export function createMedia(allmedias, mediaSection){
     // Créer toutes les PhotographerCar
-    allmedias?.forEach((medias) =>{
-     const htmlcard = allmedias.generateHTMLCard();
+    allmedias?.forEach((media) =>{
+     const htmlcard = media.generateHTMLCard;
      mediaSection.appendChild(htmlcard);
 
     });
@@ -16,6 +16,8 @@ import {showModalFilter,closeModalFilterOptions} from "../utils/Dropdown.js";
    // Updatemedia par filtre
   export function displayMedia(allmedias, filter, mediaSection) {
       // Changer de média avec le filtre
+      const filterActive = document.querySelector('.photographer__filter--active');
+      filterActive.innerText = filter;
 
     sortMedia(allmedias, filter); 
          // Réinitialiser la section des médias de contenu

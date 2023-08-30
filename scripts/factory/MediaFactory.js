@@ -1,5 +1,5 @@
-import { Image } from '../models/Image.js';
-import { Video } from '../models/Video.js';
+import { Image } from '../models/image.js';
+import { Video } from '../models/video.js';
 
 class MediaFactory {
     constructor(data) {
