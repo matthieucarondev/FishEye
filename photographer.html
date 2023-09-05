@@ -1,45 +1,62 @@
 <!DOCTYPE html>
-<html  lang="fr">
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <script src="https://kit.fontawesome.com/dcb233c813.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <script
+      src="https://kit.fontawesome.com/dcb233c813.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
       <a href="index.html" aria-label="lien vers page accueil">
-           <img src="assets/logo.png" alt="logo" class="logo" />
+        <img src="assets/logo.png" alt="logo" class="logo" />
       </a>
     </header>
     <main id="main" aria-hidden="false">
       <!-------PROFILE PHOTOGRAPHE------------->
       <section id="profile"></section>
       <section id="sortBy"></section>
-    <section id="photograph-media"></section>
-    <!--Like total photographe-->
-    <aside id="total" role="complementary"></aside>
-     
+      <section id="photograph-media" >
+      </section>
+      <!--Like total photographe-->
+      <aside id="total" role="complementary"></aside>
     </main>
+  
     <div id="contact_modal">
-
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="closemodal" onclick="closeModal()" />
+          <img
+            src="assets/icons/close.svg"
+            alt="closemodal"
+            onclick="closeModal()"
+          />
         </header>
-				<form>
-					<div>
-						<label for="prenom">Prénom</label>
-						<input  type="text" id="prenom" name="prenom" placeholder="Saisissez votre prénom"  />
-					</div>
+        <form>
+          <div>
+            <label for="prenom">Prénom</label>
+            <input
+              type="text"
+              id="prenom"
+              name="prenom"
+              placeholder="Saisissez votre prénom"
+            />
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
+    <script type="module"   src="/scripts/templates/lightbox.js " defer></script>
     <script type="module" src="/scripts/app.js"></script>
     <script type="module" src="/scripts/utils/contactForm.js"></script>
+    
   </body>
 </html>

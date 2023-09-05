@@ -1,11 +1,8 @@
+function getInputSelection() {
+  const input = document.createElement("div");
+  input.classList.add("photographer__filter");
 
-       function   getInputSelection() {
-    const input = document.createElement('div');
-    input.classList.add("photographer__filter");
-    
-           input.innerHTML = `
-            
-          
+  input.innerHTML = `
            <h2 class="photographer__filter--label">Trier par</h2>
            <!-- Default option -->
            <div
@@ -57,10 +54,8 @@
                    <h4 class="photographer__filter--optionname">Titre</h4>
                </div>
            </div>
-        `
-           
-              
-    return (input); 
-    
-} 
-export {getInputSelection}; 
+        `;
+
+  return input;
+}
+export { getInputSelection };

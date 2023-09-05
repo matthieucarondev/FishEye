@@ -1,12 +1,12 @@
 class PhotographerCard {
-    constructor(photographer) {
-        this._photographer = photographer;
-    }
+  constructor(photographer) {
+    this._photographer = photographer;
+  }
 
-    createPhotographerCard() {
-        const article = document.createElement('article');
+  createPhotographerCard() {
+    const article = document.createElement("article");
 
-        const photographerCard = `
+    const photographerCard = `
         <!-- Photographer Card -->
         <div class="photographer__card">
             <a href="./photographer.html?id=${this._photographer.id}" aria-label="vers la page du photographe ${this._photographer.name}" class="photographer__card--link">
@@ -22,10 +22,10 @@ class PhotographerCard {
         </div>
         `;
 
-        article.innerHTML = photographerCard;
+    article.innerHTML = photographerCard;
 
-        return article;
-    }
+    return article;
+  }
 }
 
 export { PhotographerCard };
