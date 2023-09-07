@@ -78,7 +78,8 @@ class App {
             (medias) => new MediaFactory(medias)
           );
 
-          this.sortElement();
+          this.sortElement(); 
+          
 
           displayMedia(Mediaphotograph, "Popularité", this._mediaSection);
           // tous les option filtre
@@ -92,7 +93,7 @@ class App {
           // 'Titre'
           this.SortEvent(filterTitre, Mediaphotograph, "Titre");
           
-          Lightbox.init(Mediaphotograph);
+          
           // aside prix total like
 
           const asideLikes = document.getElementById("total");

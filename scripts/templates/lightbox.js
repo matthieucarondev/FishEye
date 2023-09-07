@@ -1,29 +1,65 @@
+export class Lightbox { 
+  
+  
+  /**
+  * @constructs Lightbox
+  * @param {string} type Type de média
+  * @param {string} url Image Url
+  * @param {string[]} images Url du tableau d’images
+  * @param {string[]} imagesTitles Gamme de titres multimédias
+  */
+ constructo(medias){
+  this.medias=medias;
+ }
+  shoowLightbox(mediaId){
+    const media = this.medias.find(media=> media._id=== mediaId)
+    this.elemnt=this.buildDom();
 
-/**
- * @class
- */
-export class Lightbox {
-    /**
-     * Initialisation
-     * @param {Object[]} photographerMediasList Un tableau d'instances Media
-     */
-    static init(allmedias) {
-      const mediaList = Array.from(allmedias);
-       
-      const mediaLinks = mediaList.map((media) => {
-        
-        if (media.constructor.name === "Video") {
-          return media.video;
+    document.body.appendChild(this.element);
+
+      if  (media.constructor.name === "Video") {
+         this.loadVideo(media._title,`assets/medias/${media._photographerId}/${media.video}`);
         } else if (media.constructor.name=== "Image") {
-          return  media.image;
+          this.loadImage(media._title,`assets/medias/${media._photographerId}/${media.image}`);
+        }
+        const indexCourantDeMonMedia =this.medias.findIndex(media =>media._id===id);
+        const indexSuivant =this.medias.length===indexCourantDeMonMedia +1 ?0:indexCourantDeMonMedia+1;
+        const indexPrecedent = indexCourantDeMonMedia===0? this.medias.length -1:indexCourantDeMonMedia -1;
+
+        const btnPrev = document.getElementById("btn-prev")
+        const btnNext = document.getElementById("btn-next")
+
+        btnPrev.setAttribute("data-id",indexPrecedent)
+        btnNext.setAttribute("data-id",indexSuivant)
+
+        btnPrev.addEventListener("click",(e)=>{
+          const mediaId = e.target.dataset.id
+          const media = this.medias.find(media =>media._id ===mediaId)
+          this.generateLightBoxContainer(media);
+        })
+
+          btnNext.addEventListener("click",(e)=>{
+            const mediaId = e.target.dataset.id
+            const media = this.medias.find(media =>media._id ===mediaId)
+            this.generateLightBoxContainer(media);
+        })
+  
+
+  }
+static init(allmedias) {
+      const mediaList = Array.from(medias);
+      const mediaLinks = mediaList.map((media) => {
+        if (media.constructor.name ==="image") {
+          return media.image;
+          } else if (media.constructor.name ==="video") {
+            return media.video;
         }
       });
 
-      const mediaTitles = mediaList.map((media) => media.title);
 
       mediaList.forEach((media) => {
-        const html = document.getElementsByClassName(`${media._photographerId}`);
-        //const profil= mediaList.find((media)=>media===photographerId);
+        const html = document.querySelectorAll(`${this._id}`);
+    
   
         // Ajouter un événement au clic qui ouvre une lightbox pour les médias
         html[0].addEventListener("click", (e) => {
@@ -41,7 +77,7 @@ export class Lightbox {
             url = null;
           }
   
-          new Lightbox(type, url, mediaLinks, mediaTitles);
+          new Lightbox(url);
         });
   
         // Ajouter un événement en appuyant sur une touche Entrée qui ouvre une lightbox pour les médias
@@ -59,36 +95,14 @@ export class Lightbox {
               url = null;
             }
   
-            new Lightbox(type, url, mediaLinks, mediaTitles);
+            new Lightbox(url);
           }
         });
       });
     }
     
 
-  /**
-  * @constructs Lightbox
-  * @param {string} type Type de média
-  * @param {string} url Image Url
-  * @param {string[]} images Url du tableau d’images
-  * @param {string[]} imagesTitles Gamme de titres multimédias
-  */
- constructor(type, url, images, imagesTitles) {
-   this.element = this.buildDom(url);
-   this.images = images;
-   this.imagesTitles = imagesTitles;
-   this.onKeyUp = this.onKeyUp.bind(this);
-
-   if (type === "Image") {
-     this.loadImage(url);
-   }
-   if (type === "Video") {
-     this.loadVideo(url);
-   }
-
-   document.body.appendChild(this.element);
-   document.addEventListener("keyup", this.onKeyUp);
- }
+ 
 
  /**
   * Keyboard access
@@ -120,15 +134,15 @@ export class Lightbox {
    container.appendChild(loader);
 
    // titre image
-   const i = this.images.findIndex((image) => image === url);
-   const imageTitle = document.createElement("p");
+ 
+   const mediaTitle = document.createElement("p");
    imageTitle.classList.add("lightbox__title");
-   imageTitle.textContent = this.imagesTitles[i];
+   imageTitle.textContent = this._title;
 
    //image.onload = () => {
      container.removeChild(loader);
      container.appendChild(image);
-     container.appendChild(imageTitle);
+     container.appendChild(mediaTitle);
      this.url = url;
    //};
 
@@ -155,19 +169,19 @@ export class Lightbox {
    container.appendChild(loader);
 
    // titre image
-   const i = this.images.findIndex((image) => image === url);
-   const imageTitle = document.createElement("p");
+   
+   const mediaTitle = document.createElement("p");
    imageTitle.classList.add("lightbox__title");
-   imageTitle.textContent = this.imagesTitles[i];
-
+   imageTitle.textContent = this._title;
+   video.src = url;
    //video.load = () => {
    container.removeChild(loader);
    container.appendChild(video);
-   container.appendChild(imageTitle);
+   container.appendChild(mediaTitle);
    this.url = url;
   // };
 
-   video.src = url;
+   
  }
 
  /**
@@ -242,9 +256,9 @@ export class Lightbox {
    lightboxEl.innerHTML = `
 
    <div class=".lightbox__wrapper">
-     <button class="lightbox__close" aria-label="close"></button>
-     <button class="lightbox__prev"  aria-label="previous"></button>
-     <button class="lightbox__next"  aria-label="next"></button>
+     <button  class="lightbox__close" aria-label="close"></button>
+     <button id="btn-prev" class="lightbox__prev datad=""  aria-label="previous"></button>
+     <button id="btn-next" class="lightbox__next" datad=""  aria-label="next"></button>
      <div class="lightbox__container"></div>
    </div>
    

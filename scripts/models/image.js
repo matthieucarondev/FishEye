@@ -15,11 +15,11 @@ class Image extends Media {
     article.classList.add("media_photo");
 
     const imageCard = `
-         <a  tabindex="0"  >
+        <a  tabindex="0" >
             <figure  class="medias_photographer" aria-label="media__image" tabindex="0">
-                    
-                      <img class="medias-photographer_pic ${this._photographerId}"  href="/assets/medias/${this._photographerId}/${this._image}" src="./assets/medias/${this._photographerId}/${this._image}" alt="${this._title}" >
-                       
+                     
+                      <img class="medias-photographer_pic ${this._id}"  src="./assets/medias/${this._photographerId}/${this._image}" alt="${this._title}" >
+                      
                     <figcaption class="media_photo__information">
                           <h3>${this._title}</h3>
                           <div class="information-likes">
@@ -30,7 +30,7 @@ class Image extends Media {
                           </div> 
                     </figcaption> 
              </figure>
-    </a>
+     </a>
             `;
     article.innerHTML = imageCard;
     return article;
