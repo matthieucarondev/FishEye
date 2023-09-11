@@ -11,7 +11,8 @@ import { MediaFactory } from "./factory/MediaFactory.js";
 
 import { displayMedia, SortSelectEvent } from "./component/Media.js";
 import { closeModalFilterOptions } from "./utils/Dropdown.js";
-import { Lightbox } from "./templates/lightbox.js";
+
+import { LightBox } from "./templates/lightbox.js";
 
 class App {
   constructor() {
@@ -21,7 +22,7 @@ class App {
     );
     // Page du photographe, avec toutes les données du photographe
     this._photographerPage = document.querySelector("#profile");
-    this._mediaSection = document.getElementById("photograph-media");
+    this._mediaSection = document.getElementById("gallery");
     // Créer PhotographerApi pour obtenir des données Photographer
     this._photographData = new PhotographData("../../data/photographers.json");
     this._mediaApi = new mediaData("../../data/photographers.json");
@@ -78,10 +79,15 @@ class App {
             (medias) => new MediaFactory(medias)
           );
 
-          this.sortElement(); 
+          this.sortElement();
+          
           
 
-          displayMedia(Mediaphotograph, "Popularité", this._mediaSection);
+
+
+
+
+          displayMedia(Mediaphotograph, "Popularité", this._mediaSection );
           // tous les option filtre
           const filterPopularite = document.getElementById("filter-popularite");
           const filterDate = document.getElementById("filter-date");
@@ -93,7 +99,7 @@ class App {
           // 'Titre'
           this.SortEvent(filterTitre, Mediaphotograph, "Titre");
           
-          
+           this.Lightbox(Mediaphotograph);
           // aside prix total like
 
           const asideLikes = document.getElementById("total");
@@ -102,6 +108,21 @@ class App {
         }
       }
     }
+  } 
+  Lightbox(allMedia){
+    const lightbox = new LightBox(allMedia);
+    const arrayLightbox = document.querySelectorAll('#gallery .card');
+
+   arrayLightbox.forEach((mediaLigtbox) =>{
+     mediaLigtbox.addEventListener("click", (e) => {
+       lightbox.show(e.currentTarget.dataset.id);
+     });
+     mediaLigtbox.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") { lightbox.show(e.currentTarget.dataset.id);  
+      }
+     });
+    });
+  
   }
   sortElement() {
     const SortBy = document.getElementById("sortBy");

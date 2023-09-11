@@ -23,7 +23,9 @@ export function displayMedia(allmedias, filter, mediaSection) {
   mediaSection.innerHTML = "";
   createMedia(allmedias, mediaSection);
   closeModalFilterOptions();
-  manageLikes();
+  manageLikes();  
+  
+
 }
 
 function manageNumberLikes(like) {

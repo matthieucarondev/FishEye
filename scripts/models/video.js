@@ -10,15 +10,15 @@ class Video extends Media {
     return this._video;
   }
   get generateHTMLCard() {
-    const article = document.createElement("article");
-    article.classList.add("media_video");
+    const article = document.createElement("div");
+    article.classList.add("card");
+    article.setAttribute("data-id", this._id);
 
     const videoCard = `
-    <a  tabindex="0" >
-                  <figure  class="medias_photographer" aria-label="media__image" tabindex="0">
-                     
-                      <video class="medias-photographer_pic ${this._id}">
-                         <source src="../assets/medias/${this._photographerId}/${this._video}"   href="../assets/medias/${this._photographerId}/${this._video}" type="video/mp4"/>
+        
+                  <figure  class="medias_photographer" aria-label="media__image"  tabindex="0">
+                      <video class="medias-photographer_pic">
+                         <source  src="../assets/medias/${this._photographerId}/${this._video}"  href="../assets/medias/${this._photographerId}/${this._video}" type="video/mp4" />
                       </video>
                      
             <figcaption class="media_photo__information">
@@ -31,7 +31,7 @@ class Video extends Media {
                 </div> 
             </figcaption> 
       </figure>           
-       </a>    
+        
             
         `;
     article.innerHTML = videoCard;
