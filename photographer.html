@@ -29,41 +29,70 @@
       <aside id="total" role="complementary"></aside>
     </main>
     <!-- Modale -->
- <div id="lightbox">
-  <div class="lightbox__wrapper">
-    <div class="lightbox__container"></div>
-    <button  class="lightbox__close" aria-label="close"></button>
-    <button id="btn-prev" class="lightbox__prev"  aria-label="previous"></button>
-    <button id="btn-next" class="lightbox__next"   aria-label="next"></button>
-    
-  </div>
- </div>
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img
-            src="assets/icons/close.svg"
-            alt="closemodal"
-            onclick="closeModal()"
-          />
-        </header>
-        <form>
-          <div>
-            <label for="prenom">Prénom</label>
-            <input
-              type="text"
-              id="prenom"
-              name="prenom"
-              placeholder="Saisissez votre prénom"
-            />
+
+    <form
+    id="formContact"
+    action="photographeUnique.html"
+    method="get"
+    role="send message"
+    aria-labelledby="form contact"
+  >
+    <div class="bg">
+      <div class="formulaire">
+        <div class="header_formulaire">
+          <div class="flex">
+            <h2>Contactez-moi</h2>
+            <h3 id="namePh"></h3>
           </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
+          <span aria-hidden="true" id="close">X</span>
+        </div>
+
+        <label id="label_prenom" for="prenom">Prénom</label>
+        <input
+          aria-labelledby="label_prenom"
+          type="text"
+          name="prenom"
+          id="prenom"
+        />
+
+        <label id="label_nom" for="nom">Nom</label>
+        <input
+          aria-labelledby="label_nom"
+          type="text"
+          name="nom"
+          id="nom"
+        />
+
+        <label id="label_email" for="email">Email</label>
+        <input
+          aria-labelledby="label_email"
+          type="email"
+          name="email"
+          id="email"
+        />
+
+        <label id="label_message" for="message">Votre message</label>
+        <textarea
+          aria-labelledby="label_message"
+          type="text"
+          name="message"
+          id="message"
+          placeholder="Votre message ..."
+        ></textarea>
+
+        <span id="error_message"></span>
+        <div class="position_btn">
+          <button aria-label="Envoyer les informations" type="submit">
+            Envoyer
+          </button>
+        </div>
       </div>
+    </div>
+  </form>
+
     </div>
    <script type="module" src="./scripts/templates/lightbox.js"></script>
     <script type="module" src="/scripts/app.js"></script>
-    <script type="module" src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/utils/form.js"></script>
   </body>
 </html>

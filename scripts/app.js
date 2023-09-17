@@ -2,18 +2,15 @@ import { PhotographData } from "./data/photographData.js";
 import { DataFactory } from "./factory/DataFactory.js";
 import {
   createAllPhotographerCard,
-  createGlobalProfilephotographer,
+  createGlobalProfilephotographer
 } from "./component/photographer.js";
 import { getInputSelection } from "./templates/sortby.js";
 import { Likes } from "./templates/Likes.js";
 import { mediaData } from "./data/mediaData.js";
 import { MediaFactory } from "./factory/MediaFactory.js";
-
 import { displayMedia, SortSelectEvent } from "./component/Media.js";
 import { closeModalFilterOptions } from "./utils/Dropdown.js";
-
-import { LightBox } from "./templates/lightbox.js";
-
+import { Form } from "./utils/form.js";
 class App {
   constructor() {
     // Section avec tous les profils de photographes
@@ -68,7 +65,11 @@ class App {
 
         // creer Photographer Page
         createGlobalProfilephotographer(Photographer, this._photographerPage);
-
+        
+        this.openContactModal();
+        
+      
+       
         // recuperer les medias du photographes : une liste d"objet au format json
         const allMediaDATA = await this._mediaApi.getAllMediaByPhotographer(
           photographerID
@@ -88,42 +89,50 @@ class App {
 
 
           displayMedia(Mediaphotograph, "Popularité", this._mediaSection );
+         
           // tous les option filtre
           const filterPopularite = document.getElementById("filter-popularite");
           const filterDate = document.getElementById("filter-date");
           const filterTitre = document.getElementById("filter-titre");
           // 'Popularité'
           this.SortEvent(filterPopularite, Mediaphotograph, "Popularité");
+         
           // 'Date'
           this.SortEvent(filterDate, Mediaphotograph, "Date");
+          
           // 'Titre'
           this.SortEvent(filterTitre, Mediaphotograph, "Titre");
-          
-           this.Lightbox(Mediaphotograph);
+         
+           
           // aside prix total like
 
           const asideLikes = document.getElementById("total");
           const asideTemplate = new Likes(Photographer, Mediaphotograph);
           asideLikes.innerHTML = asideTemplate.createAsideLikes();
+    
+
+            new Form().validation();
+          
+          
         }
       }
     }
   } 
-  Lightbox(allMedia){
-    const lightbox = new LightBox(allMedia);
-    const arrayLightbox = document.querySelectorAll('#gallery .card');
 
-   arrayLightbox.forEach((mediaLigtbox) =>{
-     mediaLigtbox.addEventListener("click", (e) => {
-       lightbox.show(e.currentTarget.dataset.id);
-     });
-     mediaLigtbox.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") { lightbox.show(e.currentTarget.dataset.id);  
-      }
-     });
-    });
+  openContactModal() {
+   const error=document.getElementById("error_message");
+    const form = document.getElementById("formContact");
+    document.querySelector(".contact_button").addEventListener("click", (e) => {
+      form.style.display = "block";
+      const name = document.getElementById("namePh");
+      name.innerHTML=e.currentTarget.dataset.id;
+      error.style.display = "none";
   
-  }
+    });
+   }
+
+ 
+
   sortElement() {
     const SortBy = document.getElementById("sortBy");
     SortBy.appendChild(getInputSelection());
@@ -142,6 +151,8 @@ class App {
   SortEvent(filter, allmedia, option) {
     filter.addEventListener("click", () =>
       displayMedia(allmedia, option, this._mediaSection)
+      
+      
     );
     filter.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
@@ -151,7 +162,9 @@ class App {
       }
     });
   }
+
 }
+
 
 // Créer une application « FishEye »
 const app = new App();

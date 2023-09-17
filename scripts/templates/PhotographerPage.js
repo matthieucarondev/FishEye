@@ -12,7 +12,7 @@ class PhotographerPage {
             </div>
                 <h3>${this._photographer.tagline}</h3>
         </div>
-        <button class="contact_button" onclick="displayModal()" >Contactez-moi</button>
+        <button class="contact_button"  data-id="${this._photographer.name}">Contactez-moi</button>
             <div class="photographer__page--avatar">
                 <img src="../../${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}">
             </div>

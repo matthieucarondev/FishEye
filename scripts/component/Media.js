@@ -2,6 +2,7 @@ import { Image } from "../models/image.js";
 import { Video } from "../models/video.js";
 import { MediaFactory } from "../factory/MediaFactory.js";
 import { showModalFilter, closeModalFilterOptions } from "../utils/Dropdown.js";
+import { LightBox } from "../templates/lightbox.js";
 
 
 export function createMedia(allmedias, mediaSection) {
@@ -23,10 +24,35 @@ export function displayMedia(allmedias, filter, mediaSection) {
   mediaSection.innerHTML = "";
   createMedia(allmedias, mediaSection);
   closeModalFilterOptions();
-  manageLikes();  
+  manageLikes(); 
+  Lightbox(allmedias) 
+}
+
+function Lightbox(allMedia) {
+    
+  const lightbox = new LightBox(allMedia);
   
+  const arrayLightbox = document.querySelectorAll('#gallery .card');
+
+ arrayLightbox.forEach((mediaLigtbox) =>{
+   mediaLigtbox.addEventListener("click", (e) => {
+    
+
+     lightbox.show(e.currentTarget.dataset.id);
+   });
+   mediaLigtbox.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") { 
+     
+      lightbox.show(e.currentTarget.dataset.id);  
+    }
+   });
+  });
 
 }
+
+
+
+
 
 function manageNumberLikes(like) {
   const numberLikes = like.querySelector(".likes");
