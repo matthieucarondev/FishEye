@@ -56,16 +56,19 @@ function Lightbox(allMedia) {
 
 function manageNumberLikes(like) {
   const numberLikes = like.querySelector(".likes");
+  const iconlike = like.querySelector(".icon");
   const totalLikes = document.getElementById("total-likes");
   // Ajoutez ou supprimez la classe "liké" pour savoir si le média a été aimé ou non
-  like.parentElement.classList.toggle("liked");
+  like.classList.toggle("liked");
+  iconlike.classList.toggle("heart");
+  
 
   // Obtenez les likes actuels et le total des likes
   let currentLike = parseInt(numberLikes.textContent);
   let totalPhotographerLikes = parseInt(totalLikes.textContent);
 
   //réussir à ajouter ou réduire le courant comme
-  if (like.parentElement.classList.contains("liked")) {
+  if (like.classList.contains("liked")) {
     currentLike++;
     totalPhotographerLikes++;
   } else {
@@ -84,6 +87,7 @@ function manageLikes() {
   allLikes.forEach((like) => {
     like.addEventListener("click", () => {
       manageNumberLikes(like);
+      
     });
     like.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {

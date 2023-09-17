@@ -44,6 +44,7 @@ export class Form {
   displayForm() {
     const close = document.getElementById("close");
     const form = document.getElementById("formContact");
+    const modal = document.querySelector(".bg");
     close.addEventListener("click", () => {
       form.reset();
       form.style.display = "none";
@@ -54,6 +55,12 @@ export class Form {
         form.style.display = "none";
       }
     });
+    modal.addEventListener("click", (e) => {
+        if (e.target == e.currentTarget) {
+            form.reset();
+            form.style.display = "none";
+        }
+      });
   }
 
   //resultat dans la console
