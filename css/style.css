@@ -85,3 +85,9 @@ h1 {
     background: #C4C4C4;
 
 }
+#achecker{
+    display: flex;
+    align-content: center;
+    margin-top: 81px;
+    justify-content: center;
+}

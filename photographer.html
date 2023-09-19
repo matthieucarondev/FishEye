@@ -17,7 +17,7 @@
   <body>
     <header>
       <a href="index.html" aria-label="lien vers page accueil">
-        <img src="assets/logo.png" alt="logo" class="logo" />
+        <img src="assets/logo.png" alt="logo" class="logo"  aria-label="logo fishEye"/>
       </a>
     </header>
     <main id="main" aria-hidden="false">
@@ -44,7 +44,7 @@
             <h2>Contactez-moi</h2>
             <h3 id="namePh"></h3>
           </div>
-          <span aria-hidden="true" id="close">X</span>
+          <span aria-hidden="true" id="close" aria-label="Fermer">X</span>
         </div>
 
         <label id="label_prenom" for="prenom">Prénom</label>
@@ -89,7 +89,11 @@
       </div>
     </div>
   </form>
-
+  <p id="achecker">
+    <a href="https://achecks.org/checker/index.php?uri=referer&gid=WCAG2-AA">
+      <img src="https://achecks.org/images/icon_W2_aa.jpg" alt="WCAG 2.0 (niveau AA)" height="32" width="102" />
+    </a>
+  </p>
     </div>
    <script type="module" src="./scripts/templates/lightbox.js"></script>
     <script type="module" src="/scripts/app.js"></script>
