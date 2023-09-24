@@ -21,8 +21,8 @@ class App {
     this._photographerPage = document.querySelector("#profile");
     this._mediaSection = document.getElementById("gallery");
     // Créer PhotographerApi pour obtenir des données Photographer
-    this._photographData = new PhotographData("../../data/photographers.json");
-    this._mediaApi = new mediaData("../../data/photographers.json");
+    this._photographData = new PhotographData("././data/photograph.json");
+    this._mediaApi = new mediaData("././data/photographers.json");
   }
 
   async homePage() {

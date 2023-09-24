@@ -3,7 +3,7 @@ import { Media } from "../models/media.js";
 class DataFactory {
   constructor(data, type) {
     // Photographer
-    if (type === "PhotographData") {
+    if (type==="PhotographData") {
       return new Photographer(data);
     } else if (type === "MediaData") {
       return new Media(data);
