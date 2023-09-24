@@ -1,4 +1,4 @@
-import { Photographer } from "../models/Photographer.js";
+import { Photographer } from "../models/photographer.js";
 import { Media } from "../models/media.js";
 class DataFactory {
   constructor(data, type) {

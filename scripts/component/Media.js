@@ -41,7 +41,7 @@ function Lightbox(allMedia) {
      lightbox.show(e.currentTarget.dataset.id);
    });
    mediaLigtbox.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") { 
+    if (e.key === "Enter" && e.currentTarget.dataset.id) {  
      
       lightbox.show(e.currentTarget.dataset.id);  
     }

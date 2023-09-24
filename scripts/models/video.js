@@ -16,22 +16,19 @@ class Video extends Media {
 
     const videoCard = `
         
-                  <figure  class="medias_photographer" aria-label="media__image"  tabindex="0">
-                  <a class="card " data-id="${this._id}">
-
-                      <video class="medias-photographer_pic">
+             <figure  class="medias_photographer card" data-id="${this._id}" aria-label="media__image"  tabindex="0">
+                <video class="medias-photographer_pic">
                          <source  src="../assets/medias/${this._photographerId}/${this._video}"  href="../assets/medias/${this._photographerId}/${this._video}" type="video/mp4" />
-                      </video></a>
-            <figcaption class="media_photo__information">
-                 <h3>${this._title}</h3>
-                <div class="information-likes" >
-                  <span class="likes">${this._likes}</span>
-                    <svg tabindex="0" class="icon" role="button" aria-label="Bouton de like" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    
-                    </svg>
-                </div> 
+                      </video>
+             <figcaption class="media_photo__information">
+                 <h3>${this._title}</h3> 
             </figcaption> 
-      </figure>           
+            </figure> 
+            <div class="information-likes">
+                <span class="likes">${this._likes}</span>
+                <svg tabindex="0" class="icon" role="button" aria-label="Bouton de like" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                </svg>
+            </div>          
         
             
         `;

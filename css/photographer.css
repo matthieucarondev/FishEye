@@ -188,6 +188,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  left: 17rem;
+  top: -3rem;
 }
 .likes {
   font-family: DM Sans;
@@ -204,10 +207,14 @@
  }
 .icon{
   background: url(../assets/icons/heart.svg)center no-repeat ;
+  position: relative;
+
 
 }
 .heart{
   background: url(../assets/icons/heartred.svg)center no-repeat;
+  position: relative;
+   
 
 }
 
@@ -262,6 +269,7 @@
   z-index: 11;
   overflow: auto;
 }
+
 .lightbox button {
   opacity: 1;
   transition: opacity 0.3s;
@@ -276,15 +284,27 @@
 .lightbox__prev {
   background: url(../assets/icons/Vector.svg) center center / 100% 100%
     no-repeat;
-  width: 40px;
-  height: 100%;
-  border: none;
-  position: absolute;
-  top: 0;
-  right: 18rem;
-  transform: rotate(180deg);
-  margin-top: -1.125rem;
+
+    font-size: 50px;
+    color: #901C1C;
+    cursor: pointer;
+   
   z-index: 12;
+}
+
+.lightbox__next{
+  transform: rotate(180deg);
+  position: relative;
+  top: 0%;
+  left: 307%;
+}
+
+.lightbox__prev {
+  
+  position: relative;
+  bottom: 9%;
+  right: 307%;
+  
 }
 .lightbox__next:focus,
 .lightbox__prev:focus {
@@ -292,24 +312,15 @@
   border-radius: 2px;
 }
 
-.lightbox__prev {
-  right: auto;
-  transform: rotate(0deg);
-  height: 100%;
-  top: 0;
-  width: 40px;
-}
-
 .lightbox__close {
-  background: url(../assets/icons/close-24px\ 1.svg) center center / 100% 100%
+  background: url(../assets/icons/close-24px\ 1.svg) center center / 50% 50%
     no-repeat transparent;
-  width: 6.5rem;
-  height: 1.5rem;
-  border: none;
-  position: absolute;
-  top: 5rem;
-  right: 19rem;
+    position: absolute;
+    left: 94%;
+    bottom: 92%;
   z-index: 13;
+  
+
 }
 .lightbox__close :focus {
   outline: 3px solid #d3573c;
@@ -318,32 +329,38 @@
   opacity: 0.6;
   border-radius: 45%;
 }
-
-.lightbox__container {
-  display: flex;
-  flex-direction: column;
+.lightbox__wrapper{
+height: 100vh;
+ display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  margin: 2rem 6rem;
-  max-width: 100%;
-  min-height: 100%;
-  min-height: 500px;
+  padding-top: 100px;
+  flex-direction: column;
+
 }
-.lightbox__container img,
-.lightbox__container video {
+.lightbox__container {
   max-width: 1242px;
-  max-height: 900px;
-  height: 70vh;
-  width: 50vw;
+ max-height: 900px;
+ display: flex;
+ position: fixed;
+ flex-direction: column;
 }
 
+
+.lightbox__container img,
+.lightbox__container video {
+  width: 1000px;
+  height: 580px;
+  object-fit:cover;
+  cursor: pointer;
+  
+}
 .lightbox__title {
-  margin-top: 1rem;
-  width: 100%;
-  max-width: 1040px;
-  font-size: 1.5rem;
-  color: #901c1c;
+  color: #901C1C;
+  font-weight: 600;
+  font-size: 32px;
+  margin: 35px;
+  line-height: 4%;
 }
 #formContact {
   display: none;
@@ -363,7 +380,7 @@
     border-radius: 5px;
     background-color: #db8876;
     margin: auto;
-    margin-top: 31px;
+    margin-top: 81px;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -399,6 +416,7 @@
     #message {
       height: 200px;
       resize: none;
+      border-radius: 5px;
     }
     button {
       background: rgba(144, 28, 28, 1);
@@ -421,6 +439,7 @@
   color: rgb(119, 3, 3);
 }
 @media screen and (min-height:900px){
+ 
   #message{
     height: 400px;
   
@@ -429,25 +448,68 @@
     height: 790px;
   }
 }
+@media  screen and (min-width :988px) and (max-width:1169px){
+  .info h1{
+    font-size: 25px;
+  }
+  .info h2{
+    font-size: 25px;
+  }
+  .photographer__page--avatar img{
+    width: 150px;
+    height: 150px;
+  }
 
-@media screen and (max-width: 1170px) {
+
+  #header{
+    justify-content: center;
+  }
+  #logo{
+    height: 70px;
+  }
+  .photograph-header_information{
+    width: 90%;
+    padding: 14px;
+    margin: 0px 37px 0px 37px ;
+  } 
+  .contact_button{
+    margin: 4px;
+    width: 112px;
+    height: 61px;
+    padding: 5px;
+  }
+  .photographer__page--avatar{
+  margin: 10px;
+  }
+  .photographer__filter{
+    align-items: center;
+    justify-content:start;
+    font-size: 10px !important;
+  }
+
+  .photographer__filter--label{
+font-size: 20px!important; 
+
+  }
+
   .formulaire {
-    width: 100% !important;
-    height: 100% !important;
-    margin-top: 0px !important;
+    z-index: 10;
+    height: 600px !important;
+    max-height: 600px;
     padding: 35px 20px 35px 20px !important;
+    
  }
     .formulaire input {
       height: 70px !important;
+      width: 90%;
     }
     #message {
-      height: 200px !important;
+      height: 21% !important;
+      width: 90%;
     }
 
     .position_btn {
       width: 100%;
-      display: flex;
-      justify-content: center;
     }
 
     h2 {
@@ -459,9 +521,40 @@
     #namePh {
       font-size: 36px !important;
     }
-    button {
-      height: 35px !important;
-      width: 175px !important;
-    }
  
-}
+ }
+ @media screen and (max-width :1110px) {
+
+   .lightbox__container img,
+   .lightbox__container video {
+    
+   }
+
+   .lightbox__next {
+     position: relative;
+     top: 0%;
+     left: 250%;
+   }
+
+   .lightbox__prev {
+    position: absolute;
+    top: 49%;
+    right: 87%;
+    margin: 0;
+
+   }
+
+   .lightbox__close {
+     position: relative;
+     bottom: 0%;
+     left: 0%;
+
+   }
+  
+   
+   .lightbox__container{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+   }
+ }

@@ -8,12 +8,12 @@ export class LightBox {
        this.media = this.getElementById(id);
        document.body.insertAdjacentHTML("beforeend", `<div id="lightbox">
     <div class="lightbox__wrapper">
-      <div class="lightbox__container"></div>
-      <button  class="lightbox__close" aria-label="close"></button>
-      <button id="btn-prev" class="lightbox__prev"  aria-label="previous"></button>
-      <button id="btn-next" class="lightbox__next"   aria-label="next"></button>
+     <button id="btn-next" class="lightbox__next"   aria-label="next"></button>
+      <div class="lightbox__container"> <button  class="lightbox__close" aria-label="close"></button></div>
+     
+     <button id="btn-prev" class="lightbox__prev"  aria-label="previous"></button>
     </div>
-    </div> `);
+   `);
 
     this.display();
     this.manageEvents();
