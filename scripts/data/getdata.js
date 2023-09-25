@@ -6,10 +6,9 @@ class Url {
   // get tous data
   async get() {
     try {
-      fetch(this._url)
-      .then(function(response) {
-        return  response.json();
-      });
+      const response = await fetch(this._url);
+      const data = await response.json();
+      return data;
     } catch (error) {
       console.log(error);
     }
