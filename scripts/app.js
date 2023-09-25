@@ -21,8 +21,8 @@ class App {
     this._photographerPage = document.querySelector("#profile");
     this._mediaSection = document.getElementById("gallery");
     // Créer PhotographerApi pour obtenir des données Photographer
-  this._photographData = new PhotographData('../data/photographers.json ');
-    this._mediaApi = new mediaData('../data/photographers.json');
+  this._photographData = new PhotographData('FishEye/data/photographers.json');
+    this._mediaApi = new mediaData('FishEye/data/photographers.json');
   }
 
   async homePage() {
@@ -176,8 +176,8 @@ function router(app, currentPage) {
 
   switch (currentPage) {
     // Home Page
-    case "/index.html":
     case "/FishEye/index.html":
+    case "/index.html":
     case "/FishEye/":
       route = app.homePage();
       break;
