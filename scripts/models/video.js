@@ -18,7 +18,7 @@ class Video extends Media {
         
             <figure  class="medias_photographer card" data-id="${this._id}" aria-label="media__image"  tabindex="0">
                 <video class="medias-photographer_pic">
-                         <source  src="../assets/medias/${this._photographerId}/${this._video}"  href="../assets/medias/${this._photographerId}/${this._video}" type="video/mp4" />
+                         <source  src="././assets/medias/${this._photographerId}/${this._video}"  href="../assets/medias/${this._photographerId}/${this._video}" type="video/mp4" />
                       </video>
                 <figcaption class="media_photo__information">
                     <h3>${this._title}</h3> 

@@ -14,7 +14,7 @@ class PhotographerPage {
         </div>
         <button class="contact_button"  data-id="${this._photographer.name}">Contactez-moi</button>
             <div class="photographer__page--avatar">
-                <img src="../../${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}">
+                <img src="././${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}">
             </div>
         </aside>
         `;
