@@ -1,16 +1,16 @@
-import { PhotographData } from "./data/photographData.js";
-import { DataFactory } from "./factory/DataFactory.js";
+import { PhotographData } from ".//data/photographData.js";
+import { DataFactory } from "././factory/DataFactory.js";
 import {
   createAllPhotographerCard,
   createGlobalProfilephotographer,
-} from "./component/photographer.js";
-import { getInputSelection } from "./templates/sortby.js";
-import { Likes } from "./templates/Likes.js";
-import { mediaData } from "./data/mediaData.js";
-import { MediaFactory } from "./factory/MediaFactory.js";
-import { displayMedia, SortSelectEvent } from "./component/Media.js";
-import { closeModalFilterOptions } from "./utils/Dropdown.js";
-import { Form } from "./utils/form.js";
+} from "././component/photographer.js";
+import { getInputSelection } from "././templates/sortby.js";
+import { Likes } from "././templates/Likes.js";
+import { mediaData } from "././data/mediaData.js";
+import { MediaFactory } from "././factory/MediaFactory.js";
+import { displayMedia, SortSelectEvent } from "././component/Media.js";
+import { closeModalFilterOptions } from "././utils/Dropdown.js";
+import { Form } from "././utils/form.js";
 class App {
   constructor() {
     // Section avec tous les profils de photographes
