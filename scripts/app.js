@@ -1,4 +1,4 @@
-import { PhotographData } from ".//data/photographData.js";
+import { PhotographData } from "././data/photographData.js";
 import { DataFactory } from "././factory/DataFactory.js";
 import {
   createAllPhotographerCard,
