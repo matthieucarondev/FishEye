@@ -2,18 +2,20 @@ export class LightBox {
   constructor(listElment) {
     this.listElment = listElment;
     this.media = null;
-     
   }
   show(id) {
-       this.media = this.getElementById(id);
-       document.body.insertAdjacentHTML("beforeend", `<div id="lightbox">
+    this.media = this.getElementById(id);
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      `<div id="lightbox">
     <div class="lightbox__wrapper">
      <button id="btn-next" class="lightbox__next"   aria-label="next"></button>
       <div class="lightbox__container"> <button  class="lightbox__close" aria-label="close"></button></div>
      
      <button id="btn-prev" class="lightbox__prev"  aria-label="previous"></button>
     </div>
-   `);
+   `
+    );
 
     this.display();
     this.manageEvents();
@@ -24,31 +26,28 @@ export class LightBox {
         `assets/medias/${this.media._photographerId}/${this.media._video}`,
         this.media._title
       );
-     
     } else if (this.media.constructor.name === "Image") {
       this.loadImage(
         `assets/medias/${this.media._photographerId}/${this.media._image}`,
         this.media._title
       );
-      
     }
   }
 
   next() {
-
     let index = this.listElment.findIndex(
       (element) => element._id == this.media._id
     );
     if (index === this.listElment.length - 1) {
       this.media = this.listElment[0];
-    } else  {
+    } else {
       this.media = this.listElment[index + 1];
     }
 
     this.display();
   }
   prev() {
-     const closeLightbox = document.querySelector("#lightbox");
+    const closeLightbox = document.querySelector("#lightbox");
 
     let index = this.listElment.findIndex(
       (element) => element._id == this.media._id
@@ -58,7 +57,7 @@ export class LightBox {
     } else {
       this.media = this.listElment[index - 1];
     }
-    
+
     this.display();
   }
 
@@ -66,48 +65,35 @@ export class LightBox {
     const _this = this;
     const closeLightbox = document.querySelector("#lightbox");
     if (closeLightbox) {
-
-    closeLightbox.remove();
-    }else {
-      
-
-    
-  }
-}
-  handlekeyup(_this, e) {
-
-    const closeLightbox = document.querySelector("#lightbox");
-    if(closeLightbox) {
-    switch (e.key) {
-      
-      case "ArrowRight":
-        _this.next();
-        break;
-
-      case "ArrowLeft":
-        _this.prev();
-        break;
-
-      case "Escape":
-        _this.close();
-        break;
-    }
-
+      closeLightbox.remove();
     } else {
-      
+    }
   }
-  
+  handlekeyup(_this, e) {
+    const closeLightbox = document.querySelector("#lightbox");
+    if (closeLightbox) {
+      switch (e.key) {
+        case "ArrowRight":
+          _this.next();
+          break;
+
+        case "ArrowLeft":
+          _this.prev();
+          break;
+
+        case "Escape":
+          _this.close();
+          break;
+      }
+    } else {
+    }
   }
   manageEvents() {
-   
     document.querySelector(".lightbox__next").addEventListener("click", (e) => {
       this.next();
-  
-    
     });
     document.querySelector(".lightbox__prev").addEventListener("click", () => {
       this.prev();
-     
     });
 
     document.querySelector(".lightbox__close").addEventListener("click", () => {
@@ -128,18 +114,17 @@ export class LightBox {
 
   getElementById(id) {
     const filterActive = document.querySelector(
-      ".photographer__filter--active");
-      if (filterActive.innerText === "Popularité") {
-         return this.listElment.find((element) => element._id == id);
-      }else if (filterActive.innerText === "Titre") {
-        return this.listElment.find((element) => element._id == id);}
-      else if (filterActive.innerText === "Date") {
-        return this.listElment.find((element) => element._id == id);}
-        else {
-          return this.listElment.find((element) => element._id == id);
-        }
-          
-   
+      ".photographer__filter--active"
+    );
+    if (filterActive.innerText === "Popularité") {
+      return this.listElment.find((element) => element._id == id);
+    } else if (filterActive.innerText === "Titre") {
+      return this.listElment.find((element) => element._id == id);
+    } else if (filterActive.innerText === "Date") {
+      return this.listElment.find((element) => element._id == id);
+    } else {
+      return this.listElment.find((element) => element._id == id);
+    }
   }
   loadImage(url) {
     this.url = null;
@@ -159,13 +144,13 @@ export class LightBox {
       mediatoreplace.replaceWith(image);
     } else {
       container.appendChild(image);
-    };
-    const titleToReplace= document.querySelector(".lightbox__title");
+    }
+    const titleToReplace = document.querySelector(".lightbox__title");
     if (titleToReplace) {
       titleToReplace.replaceWith(mediaTitle);
     } else {
       container.appendChild(mediaTitle);
-    };
+    }
     this.url = url;
 
     //};
@@ -191,15 +176,14 @@ export class LightBox {
       mediatoreplace.replaceWith(video);
     } else {
       container.appendChild(video);
-    };
-    const titleToReplace= document.querySelector(".lightbox__title");
+    }
+    const titleToReplace = document.querySelector(".lightbox__title");
     if (titleToReplace) {
       titleToReplace.replaceWith(mediaTitle);
     } else {
       container.appendChild(mediaTitle);
-    };
+    }
 
     this.url = url;
   }
-
 }

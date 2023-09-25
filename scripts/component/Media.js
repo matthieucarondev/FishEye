@@ -4,7 +4,6 @@ import { MediaFactory } from "../factory/MediaFactory.js";
 import { showModalFilter, closeModalFilterOptions } from "../utils/Dropdown.js";
 import { LightBox } from "../templates/lightbox.js";
 
-
 export function createMedia(allmedias, mediaSection) {
   // Créer toutes les PhotographerCar
   allmedias?.forEach((media) => {
@@ -18,41 +17,32 @@ export function displayMedia(allmedias, filter, mediaSection) {
   // Changer de média avec le filtre
   const filterActive = document.querySelector(".photographer__filter--active");
   filterActive.innerText = filter;
- 
+
   sortMedia(allmedias, filter);
   // Réinitialiser la section des médias de contenu
   mediaSection.innerHTML = "";
   createMedia(allmedias, mediaSection);
   closeModalFilterOptions();
-  manageLikes(); 
-  Lightbox(allmedias) 
+  manageLikes();
+  Lightbox(allmedias);
 }
 
 function Lightbox(allMedia) {
-    
   const lightbox = new LightBox(allMedia);
-  
-  const arrayLightbox = document.querySelectorAll('#gallery .card');
 
- arrayLightbox.forEach((mediaLigtbox) =>{
-   mediaLigtbox.addEventListener("click", (e) => {
-    
+  const arrayLightbox = document.querySelectorAll("#gallery .card");
 
-     lightbox.show(e.currentTarget.dataset.id);
-   });
-   mediaLigtbox.addEventListener("keypress", (e) => {
-    if (e.key === "Enter" && e.currentTarget.dataset.id) {  
-     
-      lightbox.show(e.currentTarget.dataset.id);  
-    }
-   });
+  arrayLightbox.forEach((mediaLigtbox) => {
+    mediaLigtbox.addEventListener("click", (e) => {
+      lightbox.show(e.currentTarget.dataset.id);
+    });
+    mediaLigtbox.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && e.currentTarget.dataset.id) {
+        lightbox.show(e.currentTarget.dataset.id);
+      }
+    });
   });
-
 }
-
-
-
-
 
 function manageNumberLikes(like) {
   const numberLikes = like.querySelector(".likes");
@@ -61,7 +51,6 @@ function manageNumberLikes(like) {
   // Ajoutez ou supprimez la classe "liké" pour savoir si le média a été aimé ou non
   like.classList.toggle("liked");
   iconlike.classList.toggle("heart");
-  
 
   // Obtenez les likes actuels et le total des likes
   let currentLike = parseInt(numberLikes.textContent);
@@ -87,7 +76,6 @@ function manageLikes() {
   allLikes.forEach((like) => {
     like.addEventListener("click", () => {
       manageNumberLikes(like);
-      
     });
     like.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {

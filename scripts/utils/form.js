@@ -19,7 +19,9 @@ export class Form {
     //error
 
     //regex
-    const nameRegEx = new RegExp( /^\w{2,}[a-zA-Z]+(([',. -][a-zA-Z])?[a-zA-Z]*)*$/i);
+    const nameRegEx = new RegExp(
+      /^\w{2,}[a-zA-Z]+(([',. -][a-zA-Z])?[a-zA-Z]*)*$/i
+    );
     const emailRegEx = new RegExp(/^[a-z0-9]+@([a-z]+)\.[a-z]{2,3}$/);
 
     form.addEventListener("submit", (e) => {
@@ -56,11 +58,11 @@ export class Form {
       }
     });
     modal.addEventListener("click", (e) => {
-        if (e.target == e.currentTarget) {
-            form.reset();
-            form.style.display = "none";
-        }
-      });
+      if (e.target == e.currentTarget) {
+        form.reset();
+        form.style.display = "none";
+      }
+    });
   }
 
   //resultat dans la console

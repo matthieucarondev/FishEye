@@ -13,8 +13,7 @@ class Image extends Media {
   get generateHTMLCard() {
     const article = document.createElement("div");
     article.classList.add("media");
-   // article.setAttribute("data-id", this._id);
-
+    // article.setAttribute("data-id", this._id);
 
     const imageCard = `
 
@@ -36,7 +35,7 @@ class Image extends Media {
     article.innerHTML = imageCard;
     return article;
   }
-  get;
+
 }
 
 export { Image };
