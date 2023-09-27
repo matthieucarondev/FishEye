@@ -9,10 +9,10 @@ export class LightBox {
       "beforeend",
       `<div id="lightbox">
     <div class="lightbox__wrapper">
-     <button id="btn-next" class="lightbox__next"   aria-label="next"></button>
+    <button id="btn-prev" class="lightbox__prev"  aria-label="previous"></button>
       <div class="lightbox__container"> <button  class="lightbox__close" aria-label="close"></button></div>
+      <button id="btn-next" class="lightbox__next"   aria-label="next"></button>
      
-     <button id="btn-prev" class="lightbox__prev"  aria-label="previous"></button>
     </div>
    `
     );
@@ -20,17 +20,22 @@ export class LightBox {
     this.display();
     this.manageEvents();
   }
+  
   display() {
+    const close =document.querySelector('.lightbox__close');
     if (this.media.constructor.name === "Video") {
       this.loadVideo(
         `assets/medias/${this.media._photographerId}/${this.media._video}`,
         this.media._title
       );
+    close.classList.add("close__video");
+
     } else if (this.media.constructor.name === "Image") {
       this.loadImage(
         `assets/medias/${this.media._photographerId}/${this.media._image}`,
         this.media._title
       );
+      close.classList.remove("close__video");
     }
   }
 
