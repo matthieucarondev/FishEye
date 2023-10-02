@@ -24,7 +24,7 @@ class App {
     this._photographData = new PhotographData("././data/photographers.json");
     this._mediaApi = new mediaData("././data/photographers.json");
   }
-
+//page d'accueuil
   async homePage() {
     //  Obtenir toutes les données des photographes
     const allPhotographersData =
@@ -41,7 +41,7 @@ class App {
     }
   }
 
-  // Photographer Page
+  //Page Photographer 
   async photographerPage() {
     // Obtenir photographerID sur l’URL
     const parametersURL = new URL(document.location).searchParams;
@@ -79,7 +79,7 @@ class App {
           );
 
           this.sortElement();
-
+            // creation  des  card image  classé par default "popularité"
           displayMedia(Mediaphotograph, "Popularité", this._mediaSection);
 
           // tous les option filtre
@@ -101,11 +101,13 @@ class App {
           const asideTemplate = new Likes(Photographer, Mediaphotograph);
           asideLikes.innerHTML = asideTemplate.createAsideLikes();
 
+          // Creation de la modal  de formulaire 
           new Form().validation();
         }
       }
     }
   }
+//ouvrir le formulaire 
 
   openContactModal() {
     const error = document.getElementById("error_message");
@@ -117,7 +119,7 @@ class App {
       error.style.display = "none";
     });
   }
-
+// creatio du filtre "populaire date titre"
   sortElement() {
     const SortBy = document.getElementById("sortBy");
     SortBy.appendChild(getInputSelection());
