@@ -14,15 +14,7 @@ class mediaData extends Url {
     }
   }
 
-  // Obtenir un photographe
-  async getMediaById(mediaId) {
-    try {
-      const data = await this.get();
-      return data.media.find((e) => e.id == mediaId);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+
 }
 
 export { mediaData };
