@@ -210,6 +210,11 @@ button.contact_button:hover {
   flex-direction: row;
   justify-content: space-between;
 }
+.media_photo__information h3 {
+  width: 57%;
+
+}
+
 
 .information-likes {
   width: 67px;
