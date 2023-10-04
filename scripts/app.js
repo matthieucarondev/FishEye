@@ -46,9 +46,7 @@ class App {
     // Obtenir photographerID sur l’URL
     const parametersURL = new URL(document.location).searchParams;
     const photographerID = parseInt(parametersURL.get("id"));
-    // Erreur de message d’initialisation
-    const messageError =
-      "Erreur: L'ID du photographe n'existe pas, ou n'est pas la bonne (photographerPage).";
+ 
 
     // Vérifiez si l’ID
     if (photographerID) {
@@ -106,6 +104,7 @@ class App {
         }
       }
     }
+
   }
 //ouvrir le formulaire 
 
@@ -153,9 +152,6 @@ class App {
 const app = new App();
 function router(app, currentPage) {
   let route;
-  // Message d’erreur par défaut
-  const messageError =
-    "Vous êtes perdu ? Retournons à l'accueil.Cette URL n'existe pas.";
 
   switch (currentPage) {
     // Home Page
@@ -169,6 +165,7 @@ function router(app, currentPage) {
     case "/FishEye/photographer.html":
       route = app.photographerPage();
       break;
+
   }
   return route;
 }
