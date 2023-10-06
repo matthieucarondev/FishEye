@@ -9,7 +9,7 @@ function getInputSelection() {
                class="photographer__filter--select FE-button"
                id="click"
                role="button"
-               tabindex="0"
+               tabindex="1"
                aria-label="trier les médias par ..."
                aria-haspopup="true"
                aria-expanded="false"
@@ -24,7 +24,7 @@ function getInputSelection() {
                    id="filter-popularite"
                    class="photographer__filter--option FE-button"
                    role="listbox"
-                   tabindex="0"
+                   tabindex="1"
                    aria-label="tri des médias par popularité"
                    aria-selected="true"
                >
@@ -36,7 +36,7 @@ function getInputSelection() {
                    id="filter-date"
                    class="photographer__filter--option FE-button"
                    role="listbox"
-                   tabindex="0"
+                   tabindex="1"
                    aria-label="tri des médias par date"
                    aria-selected="false"
                >
@@ -47,7 +47,7 @@ function getInputSelection() {
                    id="filter-titre"
                    class="photographer__filter--option FE-button"
                    role="listbox"
-                   tabindex="0"
+                   tabindex="1"
                    aria-label="tri des médias par titre"
                    aria-selected="false"
                >

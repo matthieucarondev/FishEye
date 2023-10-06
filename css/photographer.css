@@ -413,6 +413,7 @@ button.contact_button:hover {
   position: fixed;
   top: 0px;
   background: white;
+  z-index: 1;
 }
 
 .formulaire {
